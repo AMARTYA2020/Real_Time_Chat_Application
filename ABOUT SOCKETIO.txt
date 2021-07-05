@@ -1,0 +1,134 @@
+Websockets:
+what if we store in a Database and keep retriving information form there
+Websockets very useful for solving problem of https response
+Whenever we send request from a website and get response in return We(Client) are not always connected with server
+If we want a real time application then there must be strong link between client and server so as server can also push update
+HTTP Request cannot connect server client (NOT POSSIBLE IN HTTP PROTOCOL) 
+
+Websocket makes two way communication
+like http & https
+similarly here:
+  ws & wss (Web socket secure protocol)
+
+
+
+
+We implement with Socketio of Nodejs
+
+
+
+
+1st Description:
+ we simply make an interface chat type application in analogous to whatsapp using HTML and CSS Front end running on server port 5500
+
+2nd Description:
+ we create another folder for backend purpose using nodeserver.... (typing npm init) just after installing Nodejs in the built in terminal of VS code after changing directory to backend folder then
+ package.json is created 
+
+install npm i socket.io in the builtin terminal of VS code within backend folder
+then we create index.js in that backend folder in which Node server which will handle socket io connections
+
+EVENTS::
+const io = require('socket.io')(7000) you can take any port 7000 or 8000
+io.on means instance of socket.io which listens many socket connections like harry connected, Rohan connectde
+people texting messages to each other IO.ON LISTENS THESES ALL Socket.on -> What should happen with a particular connection
+
+if other user joinst we insert event: socket.broadcast.emit
+lets test socket server
+   npm i nodemon
+  nodemon ./index.js WE WILL RUN NODE SERVER SUCCESSFULLY
+
+
+WE make client.js under js folder
+
+
+TO CONNECT CLIENT WITH SERVER: we add in index.html script tags:
+           // FORM DOCUMENTATION OF SOCKET.IO
+<script defer src="http://localhost:7000/socket.io/socket.io.js"></script>
+    <script defer src="js/client.js"></script>
+
+
+In client we write all the function events like where the messages to be dislplayed in the container tag of CSS etc input messages etc etc
+
+we create two websites  client.js and Nodejs(index.js)as a backend..basically we need to make connection between them
+
+
+in HTML page we use script src (/socket.io/socket.io.js)  FROM SOCKETIO DOCUMENTATION ! //including a javascript file basically
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Why does my variable show it's deprecated?
+
+
+
+suppose 10 people are in connected through Node server if a new user sends message he broadcasts to 9 other people
+that this person has sent message that sends event Names"received" this event is to be received in client.js 
+
+socket.on('receive',data=>{
+    append('${data.message}: ${data.users}','left');
+})
+
+e se reload nhi hoga page bar bar
+
+FOR SENDING MESSAGE:
+form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const message = messageInput.nodeValue;
+    append('You: ${message}','right');
+    socket.emit('send',message);
+    messageInput.value= ''  // after sending message blank space
+})
+
+
+user se disconnect karneka even server se chalo bhejte hai
+user se discnnoe...bhejna hai server se client k taraf
+then socket server sends an event its name is disconnect.......from socket documentation
+ socket.on('disconnect', message=> {
+    socket.broadcast.emit('left', users[socket.id])
+    delete users[socket.id];
+  })
+
+client will listen
+
+
+AT THE MOMENT WE ARE USING THIS in same computer we can host this nodeserver 
+and people from different place will connect this nodeserver
+
+
+
+
+
+2 tabs we can pretend communication between two users
+if We open in incongnito 3 people all group
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
