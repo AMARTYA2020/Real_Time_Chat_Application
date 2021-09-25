@@ -8,7 +8,7 @@ HTTP Request cannot connect server client (NOT POSSIBLE IN HTTP PROTOCOL)
 Websocket makes two way communication
 like http & https
 similarly here:
-  ws & wss (Web socket secure protocol)
+  ws & wss (Web socket secure protocol) [ its like
 
 
 
